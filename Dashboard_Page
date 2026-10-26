@@ -1,0 +1,46 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Dashboard extends JFrame {
+
+    public Dashboard() {
+
+        setTitle("ART Banking Dashboard");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // Main Panel
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        // Welcome Label
+        JLabel welcomeLabel = new JLabel("Welcome to ART Banking", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+
+        // Buttons Panel
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(2, 2, 15, 15));
+
+        JButton accountsButton = new JButton("Accounts");
+        JButton transferButton = new JButton("Transfer Funds");
+        JButton budgetButton = new JButton("Budget Manager");
+        JButton logoutButton = new JButton("Logout");
+
+        buttonPanel.add(accountsButton);
+        buttonPanel.add(transferButton);
+        buttonPanel.add(budgetButton);
+        buttonPanel.add(logoutButton);
+
+        panel.add(welcomeLabel, BorderLayout.NORTH);
+        panel.add(buttonPanel, BorderLayout.CENTER);
+
+        add(panel);
+
+        // Logout Action
+        logoutButton.addActionListener(e -> {
+            new Login_Screen().setVisible(true);
+            dispose();
+        });
+    }
+}
